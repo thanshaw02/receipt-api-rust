@@ -1,0 +1,11 @@
+/home/thanshaw/receipt-api-rust/receipt-api-backend/target/debug/deps/libasync_trait-e599464634a33478.so: /home/thanshaw/.cargo/registry/src/index.crates.io-6f17d22bba15001f/async-trait-0.1.66/src/lib.rs /home/thanshaw/.cargo/registry/src/index.crates.io-6f17d22bba15001f/async-trait-0.1.66/src/args.rs /home/thanshaw/.cargo/registry/src/index.crates.io-6f17d22bba15001f/async-trait-0.1.66/src/bound.rs /home/thanshaw/.cargo/registry/src/index.crates.io-6f17d22bba15001f/async-trait-0.1.66/src/expand.rs /home/thanshaw/.cargo/registry/src/index.crates.io-6f17d22bba15001f/async-trait-0.1.66/src/lifetime.rs /home/thanshaw/.cargo/registry/src/index.crates.io-6f17d22bba15001f/async-trait-0.1.66/src/parse.rs /home/thanshaw/.cargo/registry/src/index.crates.io-6f17d22bba15001f/async-trait-0.1.66/src/receiver.rs
+
+/home/thanshaw/receipt-api-rust/receipt-api-backend/target/debug/deps/async_trait-e599464634a33478.d: /home/thanshaw/.cargo/registry/src/index.crates.io-6f17d22bba15001f/async-trait-0.1.66/src/lib.rs /home/thanshaw/.cargo/registry/src/index.crates.io-6f17d22bba15001f/async-trait-0.1.66/src/args.rs /home/thanshaw/.cargo/registry/src/index.crates.io-6f17d22bba15001f/async-trait-0.1.66/src/bound.rs /home/thanshaw/.cargo/registry/src/index.crates.io-6f17d22bba15001f/async-trait-0.1.66/src/expand.rs /home/thanshaw/.cargo/registry/src/index.crates.io-6f17d22bba15001f/async-trait-0.1.66/src/lifetime.rs /home/thanshaw/.cargo/registry/src/index.crates.io-6f17d22bba15001f/async-trait-0.1.66/src/parse.rs /home/thanshaw/.cargo/registry/src/index.crates.io-6f17d22bba15001f/async-trait-0.1.66/src/receiver.rs
+
+/home/thanshaw/.cargo/registry/src/index.crates.io-6f17d22bba15001f/async-trait-0.1.66/src/lib.rs:
+/home/thanshaw/.cargo/registry/src/index.crates.io-6f17d22bba15001f/async-trait-0.1.66/src/args.rs:
+/home/thanshaw/.cargo/registry/src/index.crates.io-6f17d22bba15001f/async-trait-0.1.66/src/bound.rs:
+/home/thanshaw/.cargo/registry/src/index.crates.io-6f17d22bba15001f/async-trait-0.1.66/src/expand.rs:
+/home/thanshaw/.cargo/registry/src/index.crates.io-6f17d22bba15001f/async-trait-0.1.66/src/lifetime.rs:
+/home/thanshaw/.cargo/registry/src/index.crates.io-6f17d22bba15001f/async-trait-0.1.66/src/parse.rs:
+/home/thanshaw/.cargo/registry/src/index.crates.io-6f17d22bba15001f/async-trait-0.1.66/src/receiver.rs:

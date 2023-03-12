@@ -1,0 +1,10 @@
+/home/thanshaw/receipt-api-rust/receipt-api-backend/target/debug/deps/io_lifetimes-05ee001fcaba7453.rmeta: /home/thanshaw/.cargo/registry/src/index.crates.io-6f17d22bba15001f/io-lifetimes-1.0.6/src/lib.rs /home/thanshaw/.cargo/registry/src/index.crates.io-6f17d22bba15001f/io-lifetimes-1.0.6/src/portability.rs /home/thanshaw/.cargo/registry/src/index.crates.io-6f17d22bba15001f/io-lifetimes-1.0.6/src/traits.rs /home/thanshaw/.cargo/registry/src/index.crates.io-6f17d22bba15001f/io-lifetimes-1.0.6/src/example_ffi.rs /home/thanshaw/.cargo/registry/src/index.crates.io-6f17d22bba15001f/io-lifetimes-1.0.6/src/raw.rs /home/thanshaw/.cargo/registry/src/index.crates.io-6f17d22bba15001f/io-lifetimes-1.0.6/src/views.rs
+
+/home/thanshaw/receipt-api-rust/receipt-api-backend/target/debug/deps/io_lifetimes-05ee001fcaba7453.d: /home/thanshaw/.cargo/registry/src/index.crates.io-6f17d22bba15001f/io-lifetimes-1.0.6/src/lib.rs /home/thanshaw/.cargo/registry/src/index.crates.io-6f17d22bba15001f/io-lifetimes-1.0.6/src/portability.rs /home/thanshaw/.cargo/registry/src/index.crates.io-6f17d22bba15001f/io-lifetimes-1.0.6/src/traits.rs /home/thanshaw/.cargo/registry/src/index.crates.io-6f17d22bba15001f/io-lifetimes-1.0.6/src/example_ffi.rs /home/thanshaw/.cargo/registry/src/index.crates.io-6f17d22bba15001f/io-lifetimes-1.0.6/src/raw.rs /home/thanshaw/.cargo/registry/src/index.crates.io-6f17d22bba15001f/io-lifetimes-1.0.6/src/views.rs
+
+/home/thanshaw/.cargo/registry/src/index.crates.io-6f17d22bba15001f/io-lifetimes-1.0.6/src/lib.rs:
+/home/thanshaw/.cargo/registry/src/index.crates.io-6f17d22bba15001f/io-lifetimes-1.0.6/src/portability.rs:
+/home/thanshaw/.cargo/registry/src/index.crates.io-6f17d22bba15001f/io-lifetimes-1.0.6/src/traits.rs:
+/home/thanshaw/.cargo/registry/src/index.crates.io-6f17d22bba15001f/io-lifetimes-1.0.6/src/example_ffi.rs:
+/home/thanshaw/.cargo/registry/src/index.crates.io-6f17d22bba15001f/io-lifetimes-1.0.6/src/raw.rs:
+/home/thanshaw/.cargo/registry/src/index.crates.io-6f17d22bba15001f/io-lifetimes-1.0.6/src/views.rs:

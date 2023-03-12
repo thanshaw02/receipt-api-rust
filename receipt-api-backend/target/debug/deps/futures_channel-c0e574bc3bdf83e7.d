@@ -1,0 +1,10 @@
+/home/thanshaw/receipt-api-rust/receipt-api-backend/target/debug/deps/futures_channel-c0e574bc3bdf83e7.rmeta: /home/thanshaw/.cargo/registry/src/index.crates.io-6f17d22bba15001f/futures-channel-0.3.27/src/lib.rs /home/thanshaw/.cargo/registry/src/index.crates.io-6f17d22bba15001f/futures-channel-0.3.27/src/lock.rs /home/thanshaw/.cargo/registry/src/index.crates.io-6f17d22bba15001f/futures-channel-0.3.27/src/mpsc/mod.rs /home/thanshaw/.cargo/registry/src/index.crates.io-6f17d22bba15001f/futures-channel-0.3.27/src/mpsc/queue.rs /home/thanshaw/.cargo/registry/src/index.crates.io-6f17d22bba15001f/futures-channel-0.3.27/src/mpsc/sink_impl.rs /home/thanshaw/.cargo/registry/src/index.crates.io-6f17d22bba15001f/futures-channel-0.3.27/src/oneshot.rs
+
+/home/thanshaw/receipt-api-rust/receipt-api-backend/target/debug/deps/futures_channel-c0e574bc3bdf83e7.d: /home/thanshaw/.cargo/registry/src/index.crates.io-6f17d22bba15001f/futures-channel-0.3.27/src/lib.rs /home/thanshaw/.cargo/registry/src/index.crates.io-6f17d22bba15001f/futures-channel-0.3.27/src/lock.rs /home/thanshaw/.cargo/registry/src/index.crates.io-6f17d22bba15001f/futures-channel-0.3.27/src/mpsc/mod.rs /home/thanshaw/.cargo/registry/src/index.crates.io-6f17d22bba15001f/futures-channel-0.3.27/src/mpsc/queue.rs /home/thanshaw/.cargo/registry/src/index.crates.io-6f17d22bba15001f/futures-channel-0.3.27/src/mpsc/sink_impl.rs /home/thanshaw/.cargo/registry/src/index.crates.io-6f17d22bba15001f/futures-channel-0.3.27/src/oneshot.rs
+
+/home/thanshaw/.cargo/registry/src/index.crates.io-6f17d22bba15001f/futures-channel-0.3.27/src/lib.rs:
+/home/thanshaw/.cargo/registry/src/index.crates.io-6f17d22bba15001f/futures-channel-0.3.27/src/lock.rs:
+/home/thanshaw/.cargo/registry/src/index.crates.io-6f17d22bba15001f/futures-channel-0.3.27/src/mpsc/mod.rs:
+/home/thanshaw/.cargo/registry/src/index.crates.io-6f17d22bba15001f/futures-channel-0.3.27/src/mpsc/queue.rs:
+/home/thanshaw/.cargo/registry/src/index.crates.io-6f17d22bba15001f/futures-channel-0.3.27/src/mpsc/sink_impl.rs:
+/home/thanshaw/.cargo/registry/src/index.crates.io-6f17d22bba15001f/futures-channel-0.3.27/src/oneshot.rs:
