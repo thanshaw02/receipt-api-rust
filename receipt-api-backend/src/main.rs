@@ -5,6 +5,20 @@ use rocket::tokio::task::spawn_blocking;
 use std::path::{PathBuf, Path};
 use std::io;
 
+// to ignore a route segment you can simply use <_> within the route to ignore a single segment
+// to ignore multiple segments in a route you can use <_..>
+// an ignored paramater must not appear in the handlers argument list however
+#[get("/foo/<_>/bar")]
+fn foo_bar() -> &'static str {
+	// ex. /foo/hiiii/bar --> the "hiiii" segment will be ignored and can be anything
+	"Foo ______ bar!"
+}
+
+#[get("/<_..>")]
+fn everything() -> &'static str {
+	"Hey, you're here."
+}
+
 // we can also match against multiple segments in a path using <param..> in the routing path
 // this paramater type is known as "segment guards" and MUST implement "FromSegments"
 // segment guards but be the final component of a route's path, any text or single segments after a segment guard will throw a compile-time error
@@ -60,6 +74,8 @@ fn rocket() -> _ {
 	let my_routes = routes![
 		blocker_task,
 		delay,
+		everything,
+		foo_bar,
 		hello,
 		world,
 	];
