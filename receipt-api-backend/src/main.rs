@@ -1,9 +1,13 @@
 #[macro_use] extern crate rocket;
 use rocket::fs::NamedFile;
+use rocket::response::Redirect;
 use rocket::tokio::time::{sleep, Duration};
 use rocket::tokio::task::spawn_blocking;
 use std::path::{PathBuf, Path};
 use std::io;
+
+// needed for cookie access
+use rocket::http::{CookieJar, Cookie};
 
 /**
  * Request Guard:
@@ -39,6 +43,41 @@ fn user_str(id: &str) -> String {
 }
 
 /********* End of forwarding *********/
+
+/*********** Cookies ***********/
+
+/* Public Cookies */
+// CookieJar::add() sets cookies that are accessable by the client (public cookies)
+
+#[get("/")]
+fn index(cookies: &CookieJar<'_>) -> Option<String> {
+	cookies.get("message").map(|crumb| format!("Message: {}", crumb.value()))
+}
+
+#[get("/set-cookie")]
+fn set_cookie(cookies: &CookieJar<'_>) -> Redirect {
+	cookies.add(Cookie::new("message", "Hello there!"));
+	Redirect::to(uri!(index))
+}
+
+/* Private Cookies */
+// these cookies are similar to public cookies except these are encrypted using authenticated encryption
+// these cookies cannot be inspected or tampered with by the client
+// support for private cookies must manually be added by importing the optional Rocket feature "secrets" in your Cargo.toml dependancy list
+
+#[get("/get-private-cookie")]
+fn get_private_cookie(cookies: &CookieJar<'_>) -> Option<String> {
+	cookies.get_private("private-message").map(|crumb| format!("Private cookie: {}", crumb.value()))
+}
+
+#[get("/set-private-cookie")]
+fn set_private_cookie(cookies: &CookieJar<'_>) -> Redirect {
+	cookies.add_private(Cookie::new("private-message", "Super secret private cookie message!"));
+	Redirect::to(uri!(get_private_cookie))
+}
+
+
+/******* End of Cookies ********/
 
 // to ignore a route segment you can simply use <_> within the route to ignore a single segment
 // to ignore multiple segments in a route you can use <_..>
@@ -109,9 +148,13 @@ fn rocket() -> _ {
 	let my_routes = routes![
 		blocker_task,
 		delay,
+		index, // cookie work
 		// everything,
 		foo_bar,
+		get_private_cookie,
 		hello,
+		set_cookie, // setting a cookie to use in the "index" route
+		set_private_cookie,
 		user,
 		user_int,
 		user_str,
