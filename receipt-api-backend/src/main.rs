@@ -1,5 +1,8 @@
 #[macro_use] extern crate rocket;
+use std::io;
+
 use rocket::tokio::time::{sleep, Duration};
+use rocket::tokio::task::spawn_blocking;
 
 #[get("/world")]
 fn world() -> &'static str {
@@ -13,7 +16,23 @@ async fn delay(seconds: u64) -> String {
 	format!("Waited for {} seconds", seconds)
 }
 
+// downloads the "data.txt" file in a blocking way?
+#[get("/blocking-tasks")]
+async fn blocker_task() -> io::Result<Vec<u8>> {
+	// In a real app, use rocket::fs::NamedFile or tokio::fs::File.
+	let vec = spawn_blocking(|| std::fs::read("data.txt")).await
+		.map_err(|e| io::Error::new(io::ErrorKind::Interrupted, e))??;
+
+	Ok(vec)
+}
+
 #[launch]
 fn rocket() -> _ {
-  rocket::build().mount("/", routes![world, delay])
+	let my_routes = routes![
+		world,
+		delay,
+		blocker_task
+	];
+
+  rocket::build().mount("/", my_routes)
 }
