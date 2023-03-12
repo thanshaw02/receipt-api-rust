@@ -5,6 +5,41 @@ use rocket::tokio::task::spawn_blocking;
 use std::path::{PathBuf, Path};
 use std::io;
 
+/**
+ * Request Guard:
+ * 	- appear as inputs to router handlers (in the handler's argument list)
+ * 	- Rocket automatically invokes the "FromRequest implementation for a requet guard before invoking the handler itself
+ * 		- Handlers are only invoked if ALL request guards pass
+ * 	- request guards only found in the handlers argument list and NOT in the route's path
+ * 	- request guards fire from left to right in the handler's argument list
+ * - request guards centralize policies, resulting in a simpler, safer, and more secure applications
+ * 
+ * Implementing custom Request Guards:
+ * 	- you can create a custom type that implements "FromRequest", this will allow your custom type to be used as a request guard for endpoints
+ * 		- for example if you require an API key in the route's path
+ */
+
+/************ Forwarding *************/
+// Routes are executed in order by their rank ranging from -12 to -1, highest ranking being -1 and lowest being -12
+// if you have multiple routes with colliding paths then you must manually rank them, if you don't then an error is thrown when starting the server
+
+#[get("/user/<id>")]
+fn user(id: usize) -> String { 
+	format!("User endpoint with highest rank: {}", id)
+}
+
+#[get("/user/<id>", rank = 2)]
+fn user_int(id: isize) -> String { 
+	format!("User endpoint with second highest rank (integer): {}", id)
+}
+
+#[get("/user/<id>", rank = 3)]
+fn user_str(id: &str) -> String { 
+	format!("User endpoint with third highest rank (string): {}", id)
+}
+
+/********* End of forwarding *********/
+
 // to ignore a route segment you can simply use <_> within the route to ignore a single segment
 // to ignore multiple segments in a route you can use <_..>
 // an ignored paramater must not appear in the handlers argument list however
@@ -74,9 +109,12 @@ fn rocket() -> _ {
 	let my_routes = routes![
 		blocker_task,
 		delay,
-		everything,
+		// everything,
 		foo_bar,
 		hello,
+		user,
+		user_int,
+		user_str,
 		world,
 	];
 
