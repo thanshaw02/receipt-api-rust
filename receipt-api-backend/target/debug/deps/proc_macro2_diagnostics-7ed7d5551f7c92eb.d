@@ -1,0 +1,10 @@
+/home/thanshaw/receipt-api-rust/receipt-api-backend/target/debug/deps/proc_macro2_diagnostics-7ed7d5551f7c92eb.rmeta: /home/thanshaw/.cargo/registry/src/index.crates.io-6f17d22bba15001f/proc-macro2-diagnostics-0.9.1/src/lib.rs /home/thanshaw/.cargo/registry/src/index.crates.io-6f17d22bba15001f/proc-macro2-diagnostics-0.9.1/src/ext.rs /home/thanshaw/.cargo/registry/src/index.crates.io-6f17d22bba15001f/proc-macro2-diagnostics-0.9.1/src/diagnostic.rs /home/thanshaw/.cargo/registry/src/index.crates.io-6f17d22bba15001f/proc-macro2-diagnostics-0.9.1/src/line.rs
+
+/home/thanshaw/receipt-api-rust/receipt-api-backend/target/debug/deps/libproc_macro2_diagnostics-7ed7d5551f7c92eb.rlib: /home/thanshaw/.cargo/registry/src/index.crates.io-6f17d22bba15001f/proc-macro2-diagnostics-0.9.1/src/lib.rs /home/thanshaw/.cargo/registry/src/index.crates.io-6f17d22bba15001f/proc-macro2-diagnostics-0.9.1/src/ext.rs /home/thanshaw/.cargo/registry/src/index.crates.io-6f17d22bba15001f/proc-macro2-diagnostics-0.9.1/src/diagnostic.rs /home/thanshaw/.cargo/registry/src/index.crates.io-6f17d22bba15001f/proc-macro2-diagnostics-0.9.1/src/line.rs
+
+/home/thanshaw/receipt-api-rust/receipt-api-backend/target/debug/deps/proc_macro2_diagnostics-7ed7d5551f7c92eb.d: /home/thanshaw/.cargo/registry/src/index.crates.io-6f17d22bba15001f/proc-macro2-diagnostics-0.9.1/src/lib.rs /home/thanshaw/.cargo/registry/src/index.crates.io-6f17d22bba15001f/proc-macro2-diagnostics-0.9.1/src/ext.rs /home/thanshaw/.cargo/registry/src/index.crates.io-6f17d22bba15001f/proc-macro2-diagnostics-0.9.1/src/diagnostic.rs /home/thanshaw/.cargo/registry/src/index.crates.io-6f17d22bba15001f/proc-macro2-diagnostics-0.9.1/src/line.rs
+
+/home/thanshaw/.cargo/registry/src/index.crates.io-6f17d22bba15001f/proc-macro2-diagnostics-0.9.1/src/lib.rs:
+/home/thanshaw/.cargo/registry/src/index.crates.io-6f17d22bba15001f/proc-macro2-diagnostics-0.9.1/src/ext.rs:
+/home/thanshaw/.cargo/registry/src/index.crates.io-6f17d22bba15001f/proc-macro2-diagnostics-0.9.1/src/diagnostic.rs:
+/home/thanshaw/.cargo/registry/src/index.crates.io-6f17d22bba15001f/proc-macro2-diagnostics-0.9.1/src/line.rs:
