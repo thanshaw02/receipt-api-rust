@@ -16,7 +16,8 @@ async fn delay(seconds: u64) -> String {
 	format!("Waited for {} seconds", seconds)
 }
 
-// downloads the "data.txt" file in a blocking way?
+// downloads the "data.txt" file
+// this converts a synchronous operation into an async one, i think?
 #[get("/blocking-tasks")]
 async fn blocker_task() -> io::Result<Vec<u8>> {
 	// In a real app, use rocket::fs::NamedFile or tokio::fs::File.
