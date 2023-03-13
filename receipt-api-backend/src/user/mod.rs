@@ -15,7 +15,6 @@ pub struct User {
 pub enum Error {
     JsonParseError,
     TooLarge,
-    NoColon,
     InvalidAge,
     Io(std::io::Error),
 }
