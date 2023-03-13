@@ -2,8 +2,10 @@
 use rocket::request::{ Request };
 use rocket::data::{ self, Data, FromData, ToByteUnit };
 use rocket::http::{ Status, ContentType };
+use serde::Deserialize;
 use serde_json::Value;
 
+#[derive(Deserialize)]
 pub struct User {
   pub name: String,
   pub age: u16,

@@ -6,22 +6,38 @@ use rocket::tokio::task::spawn_blocking;
 use std::path::{PathBuf, Path};
 use std::io;
 
+// json
+use rocket::serde::{Deserialize, json::Json};
+
 // needed for cookie access
 use rocket::http::{CookieJar, Cookie};
 
 // my own imports
 mod user;
 
+/************ Body Data *************/
+
+#[post("/user-test", format = "json", data = "<user>")]
+fn user_test(user: Json<user::User>) -> String {
+	format!("User's name: {}\nUser's age: {}", user.name, user.age)
+}
+
+/********* End of Body Data *********/
+
 /************ Formats *************/
+
+// NOTE: using 'format = "some/format"' in a GET request specifies what the endpoint expects for the "Accept" header
+// NOTE: using 'format = "some/format"' in a POST request specifies what the endpoint expects for the "Content-Type" header
 
 // this is for media types accepted, stuff like that (headers, etc.)
 
+// NOTE: "data = ''" specifies the body data sent via a POST or PUT endpoint
 #[post("/user", format = "application/json", data = "<user>")]
 fn new_user(user: user::User) -> String {
 	format!("User's name: {}\nUser's age: {}", user.name, user.age)
 }
 
-/********* End of formats *********/
+/********* End of Formats *********/
 
 /**
  * Request Guard:
@@ -56,7 +72,7 @@ fn user_str(id: &str) -> String {
 	format!("User endpoint with third highest rank (string): {}", id)
 }
 
-/********* End of forwarding *********/
+/********* End of Forwarding *********/
 
 /*********** Cookies ***********/
 
@@ -172,6 +188,7 @@ fn rocket() -> _ {
 		set_private_cookie,
 		user_int,
 		user_str,
+		user_test, // json stuff
 		user_top,
 		world,
 	];
