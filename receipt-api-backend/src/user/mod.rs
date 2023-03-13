@@ -1,0 +1,64 @@
+// use rocket::{data::{FromData, self}, Request, Data, http::ContentType};
+use rocket::request::{ Request };
+use rocket::data::{ self, Data, FromData, ToByteUnit };
+use rocket::http::{ Status, ContentType };
+use serde_json::Value;
+
+pub struct User {
+  pub name: String,
+  pub age: u16,
+}
+
+#[derive(Debug)]
+pub enum Error {
+    JsonParseError,
+    TooLarge,
+    NoColon,
+    InvalidAge,
+    Io(std::io::Error),
+}
+
+#[rocket::async_trait]
+impl<'r> FromData<'r> for User {
+  type Error = Error;
+
+  async fn from_data(req: &'r Request<'_>, data: Data<'r>) -> data::Outcome<'r, Self> {
+    use Error::*;
+    use rocket::outcome::Outcome::*;
+
+    // content type of POST is application/json
+    let person_ct = ContentType::new("application", "json");
+    if req.content_type() != Some(&person_ct) {
+      return Forward(data);
+    }
+
+    // use a configured limit with name 'user' or fallback to default
+    let limit = req.limits().get("user").unwrap_or(256.bytes());
+
+    // read data into a string
+    let string = match data.open(limit).into_string().await {
+      Ok(string) if string.is_complete() => string.into_inner(),
+      Ok(_) => return Failure((Status::PayloadTooLarge, TooLarge)),
+      Err(e) => return Failure((Status::InternalServerError, Io(e))),
+    };
+
+    let str = string.as_str();
+    let json_data: Value = match serde_json::from_str(str) {
+      Ok(val) => val,
+      Err(_) => return Failure((Status::UnprocessableEntity, JsonParseError)),
+    };
+
+    println!("Name: {}, Age: {}", json_data["name"], json_data["age"]); // debugging
+
+    let name = json_data["name"].to_string();
+    let age_string = json_data["age"].to_string();
+
+    let age = match age_string.parse() {
+      Ok(age) => age,
+      Err(_) => return Failure((Status::UnprocessableEntity, InvalidAge))
+    };
+
+    // return new User object
+    Success(User { name, age })
+  }
+}

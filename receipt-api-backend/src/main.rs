@@ -9,6 +9,20 @@ use std::io;
 // needed for cookie access
 use rocket::http::{CookieJar, Cookie};
 
+// my own imports
+mod user;
+
+/************ Formats *************/
+
+// this is for media types accepted, stuff like that (headers, etc.)
+
+#[post("/user", format = "application/json", data = "<user>")]
+fn new_user(user: user::User) -> String {
+	format!("User's name: {}\nUser's age: {}", user.name, user.age)
+}
+
+/********* End of formats *********/
+
 /**
  * Request Guard:
  * 	- appear as inputs to router handlers (in the handler's argument list)
@@ -28,7 +42,7 @@ use rocket::http::{CookieJar, Cookie};
 // if you have multiple routes with colliding paths then you must manually rank them, if you don't then an error is thrown when starting the server
 
 #[get("/user/<id>")]
-fn user(id: usize) -> String { 
+fn user_top(id: usize) -> String { 
 	format!("User endpoint with highest rank: {}", id)
 }
 
@@ -153,11 +167,12 @@ fn rocket() -> _ {
 		foo_bar,
 		get_private_cookie,
 		hello,
+		new_user,
 		set_cookie, // setting a cookie to use in the "index" route
 		set_private_cookie,
-		user,
 		user_int,
 		user_str,
+		user_top,
 		world,
 	];
 
