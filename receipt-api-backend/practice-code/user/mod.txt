@@ -1,3 +1,9 @@
+/**
+ * NOTE:
+ * 	- This code and code in '../main.txt' come from walking through the Rocket documentation
+ * 	- Link: https://rocket.rs/v0.5-rc/guide
+ */
+
 // use rocket::{data::{FromData, self}, Request, Data, http::ContentType};
 use rocket::request::{ Request };
 use rocket::data::{ self, Data, FromData, ToByteUnit };

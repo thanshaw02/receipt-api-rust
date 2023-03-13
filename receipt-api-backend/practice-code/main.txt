@@ -1,3 +1,9 @@
+/**
+ * NOTE:
+ * 	- This code and code in '/user/mod.txt' come from walking through the Rocket documentation
+ * 	- Link: https://rocket.rs/v0.5-rc/guide
+ */
+
 #[macro_use] extern crate rocket;
 use rocket::fs::NamedFile;
 use rocket::response::Redirect;
