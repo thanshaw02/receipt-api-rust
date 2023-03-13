@@ -5,6 +5,7 @@ use serde_json::Value;
 
 
 #[derive(Deserialize)]
+#[derive(Debug)]
 pub struct Item {
   pub short_description: String,
   pub price: String, // change this to some integer or double if i can
@@ -13,12 +14,13 @@ pub struct Item {
 // leaving both the "id" and the "points" attributes commented out for not just to get the endpoints working
 // will come back to this in issue #4 https://github.com/thanshaw02/receipt-api-rust/issues/4
 #[derive(Deserialize)]
+#[derive(Debug)]
 pub struct Receipt {
   // pub id: String,
   pub retailer: String,
   pub purchase_date: String,
   pub purchase_time: String,
-  // pub items: Vec<Item>,
+  pub items: Vec<Item>,
   pub total: String,
   // pub points: String
 }
@@ -55,8 +57,6 @@ impl<'r> FromData<'r> for Receipt {
       Err(e) => return Failure((Status::InternalServerError, Io(e)))
     };
 
-    println!("Receipt object as string:\n{}", string_data);
-
     // convert string data to JSON
     // there may be a better way tro do this, i'll make an issue related to refactoring and cleanign this up once it's working
     let str_data: &str = string_data.as_str();
@@ -65,35 +65,41 @@ impl<'r> FromData<'r> for Receipt {
       Err(_) => return Failure((Status::UnprocessableEntity, JsonParseError))
     };
 
-    println!("Receipt object:");
-    println!(
-      "Retailer: {}\nPurchase Date: {}\nPurchase Time: {}\nItems: {}\nTotal: {}", 
-      json_data["retailer"].to_string(), 
-      json_data["purchase_date"].to_string(),
-      json_data["purchase_time"].to_string(),
-      json_data["items"], // may not work
-      json_data["total"].to_string()
-    );
-
+    // extract all of the data (super ugly)
     let retailer = json_data["retailer"].to_string();
     let purchase_date = json_data["purchase_date"].to_string();
     let purchase_time = json_data["purchase_time"].to_string();
-    // let items = json_data["items"] as Vec<Item>;
+    let items_pointer = match json_data["items"].as_array() {
+      Some(v) => v,
+      None => return Failure((Status::UnprocessableEntity, JsonParseError))
+    };
     let total = json_data["total"].to_string();
 
-    // temporary
-    // let short_description: String = "Redbull".to_string();
-    // let price: String = "3.29".to_string();
-    // let item: Item = Item { short_description, price };
-    // let v = vec![item, item];
+    let value_items = items_pointer;
+    let mut items: Vec<Item> = vec!();
+
+    // loop through items vector/array to get it looking like we need it to look
+    for i in 0..value_items.len() {
+      let short_description = value_items[i]["short_description"].to_string();
+      let price = value_items[i]["price"].to_string();
+
+      let item = Item {
+        short_description,
+        price
+      };
+      
+      items.push(item);
+    }
 
     let receipt: Receipt = Receipt {
       retailer,
       purchase_date,
       purchase_time,
-      // v,
+      items,
       total,
     };
+
+    println!("Constructed Receipt object:\n{:#?}", receipt); // debugging
 
     // return the Receipt object
     Success(receipt)
